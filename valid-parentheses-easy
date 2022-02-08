@@ -1,0 +1,29 @@
+/**
+https://leetcode.com/problems/valid-parentheses/
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    const map = {
+        "{": "}",
+        "(": ")",
+        "[": "]"
+    }
+    const stack = [];
+    let index = 0;
+    while(index < s.length) {
+        const incoming = map[s[index]];
+        if (map[s[index]]) {
+            stack.push(s[index])
+        } else {
+            if (!stack.length) return false;
+            const pop = stack.pop();
+            if (map[pop] !== s[index]) {
+                return false;
+            }
+        }
+        index++;
+    }
+    if (stack.length) return false;
+    return true;
+};
