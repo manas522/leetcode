@@ -3,6 +3,17 @@
  https://leetcode.com/problems/number-of-1-bits
  * @return {number}
  */
+/**
+ using bits approach is better
+ */
+var hammingWeight = function(n) {
+    let count = 0;
+    while(n >0) {
+        count += n & 1; // checking if the rightmost is 1 or not
+        n >>>=1 // removing 1 from right most
+    }
+    return count;
+};
 var hammingWeight = function(n) {
     let left = 32;
     let right = 0;
